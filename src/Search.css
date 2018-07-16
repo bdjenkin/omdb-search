@@ -1,0 +1,14 @@
+.search-wrap {
+    background: #222;
+}
+.search-wrap>.container {
+    padding: 20px 0;
+}
+.search-wrap label {
+    color: #fff;
+}
+
+.results-wrap {
+    background: #ddd;
+    padding-top: 0.1rem;
+}
