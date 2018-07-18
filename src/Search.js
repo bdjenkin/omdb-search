@@ -8,7 +8,6 @@ class Search extends Component {
         super(props);
         this.state = {
             value: '',
-            mappedOut: [],
             searchResults: []
         };
 
@@ -26,17 +25,12 @@ class Search extends Component {
             .then(data => {
                 console.log(data.Search);
 
-                this.setState({searchResults: data.Search})
-
-                var resultString = JSON.stringify(data.Search);
-
-                if( resultString !== "[]" ) {
-                    if(this.state.searchResults !== undefined && this.state.searchResults !== {}) {
-                        console.log("map called");
-                        var mappedOut = data.Search.map(function(result) {return <Movie key={result.imdbID} mediaId={result.imdbID} />})
-                        this.setState({mappedOut: mappedOut})
-                    }
+                if(data.Search && data.Search.length > 0)
+                 this.setState({searchResults: data.Search})
+                else {
+                    console.log("No results with text")
                 }
+                
             })
     }
 
@@ -48,10 +42,16 @@ class Search extends Component {
             <div className="search-wrap">
                 <div className="container">
                 <label htmlFor="search-text">Search:</label>
-                <input type="text" id="search-text" className="form-control" value={this.state.value} onChange={this.handleChange} />
+                <input type="text" id="search-text" maxlength="30" className="form-control" value={this.state.value} onChange={this.handleChange} />
                 </div>
                 <div className="results-wrap">
-                    <div className="container">{ this.state.mappedOut }</div>
+                    <div className="container">
+                        { 
+                            this.state.searchResults.length > 0
+                            ? this.state.searchResults.map(function(result) {return <Movie key={result.imdbID} mediaId={result.imdbID} />})
+                            : <div className="empty-results">No results found</div>                     
+                        }
+                    </div>
                 </div>
             </div>
         );

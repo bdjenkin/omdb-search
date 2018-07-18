@@ -19,7 +19,7 @@ class Movie extends Component {
         .then(data => {
             console.log(data);
 
-            this.setState({movie: data})
+            if(data) this.setState({movie: data})
             if(data.Ratings[0])
                 this.setState({imdbscores: data.Ratings[0]})
             if(data.Ratings[1])
