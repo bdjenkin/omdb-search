@@ -14,31 +14,36 @@ class Movie extends Component {
 
   componentDidMount() {
     var root = 'http://www.omdbapi.com/?i=' + this.props.mediaId + '&apikey=cb62c109';
+
     fetch(root)
     .then(response => response.json())
         .then(data => {
             console.log(data);
 
-            if(data) this.setState({movie: data})
-            if(data.Ratings[0])
-                this.setState({imdbscores: data.Ratings[0]})
-            if(data.Ratings[1])
-                this.setState({rtscores: data.Ratings[1]})
-            if(data.Ratings[2])
-                this.setState({mcscores: data.Ratings[2]})
+            setTimeout(() => {
+
+                if(data) this.setState({movie: data})
+                if(data.Ratings[0])
+                    this.setState({imdbscores: data.Ratings[0]})
+                if(data.Ratings[1])
+                    this.setState({rtscores: data.Ratings[1]})
+                if(data.Ratings[2])
+                    this.setState({mcscores: data.Ratings[2]})
+
+            }, 500)
 
         })
   }
 
   render() {
     return (
-            <div className="movie row mt-1 mb-1">
+            <div className="movie row mt-1 mb-1 wow fadeIn" data-wow-delay={this.props.indexOf > 3 ? "0.5s" : this.props.indexOf/3 + "s" }>
                 <div className="col-3 col-sm-12 col-md-4 col-lg-3">
-                    <img src={this.state.movie.Poster} alt={this.state.movie.Title} className="poster" />
+                    <img src={this.state.movie.Poster !== "N/A" ? this.state.movie.Poster : "no-img.png" } alt={this.state.movie.Title} className="poster" />
                 </div>
-                <div className="col-6 col-sm-12 col-md-6 col-lg-6">
-                    <h6>{this.state.movie.Title} ({this.state.movie.Year})</h6>
-                    <p className="details">{this.state.movie.Rated} | Runtime: {this.state.movie.Runtime} | Released: {this.state.movie.Released} ({this.state.movie.Country})</p>
+                <div className="col-6 col-sm-12 col-md-6 col-lg-6 wow fadeIn" data-wow-delay="1s">
+                    <h6>{this.state.movie.Title} {"(" + this.state.movie.Year + ")"}</h6>
+                    <p className="details">{this.state.movie.Rated} | Runtime: {this.state.movie.Runtime} | Released: {this.state.movie.Released} {"(" + this.state.movie.Country + ")"}</p>
                     <p className="limit">
                         Starring: {this.state.movie.Actors} <br/>
                         Director: {this.state.movie.Director}

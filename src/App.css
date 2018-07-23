@@ -37,6 +37,14 @@
   padding-top: 0.1rem;
 }
 
+.empty-results {
+  background-color: #222;
+  height: 150px;
+  padding: 60px 0;
+  color: white;
+  border-radius: 6px;
+}
+
 h5 {
   text-transform: uppercase;
 }

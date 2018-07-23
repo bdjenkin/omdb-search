@@ -53,15 +53,15 @@ class App extends Component {
 
         <div className="search-wrap">
           <div className="container">
-          <label htmlFor="search-text">Search:</label>
+          <label htmlFor="search-text">Search for a movie or TV show and see results instantly:</label>
           <input type="text" id="search-text" maxLength="30" className="form-control" value={this.state.value} onChange={this.handleChange} />
           </div>
           <div className="results-wrap">
               <div className="container">
                   { 
                       this.state.searchResults.length > 0
-                      ? this.state.searchResults.map(result => <Movie key={result.imdbID} mediaId={result.imdbID} />)
-                      : <div className="empty-results">No results found</div>                     
+                      ? this.state.searchResults.map((result, index)=> <Movie key={result.imdbID} mediaId={result.imdbID} indexOf={index} />)
+                      : <div className="empty-results">No movie found!</div>                     
                   }
               </div>
           </div>

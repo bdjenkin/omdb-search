@@ -9,6 +9,8 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
+
+              
 document.getElementById("search-text").focus()
 
 
