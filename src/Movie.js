@@ -13,7 +13,7 @@ class Movie extends Component {
   };
 
   componentDidMount() {
-    var root = 'http://www.omdbapi.com/?i=' + this.props.mediaId + '&apikey=cb62c109';
+    var root = 'https://www.omdbapi.com/?i=' + this.props.mediaId + '&apikey=cb62c109';
 
     fetch(root)
     .then(response => response.json())
@@ -42,7 +42,7 @@ class Movie extends Component {
                     <img src={this.state.movie.Poster !== "N/A" ? this.state.movie.Poster : "no-img.png" } alt={this.state.movie.Title} className="poster" />
                 </div>
                 <div className="col-6 col-sm-12 col-md-6 col-lg-6 wow fadeIn" data-wow-delay="1s">
-                    <h6>{this.state.movie.Title} {"(" + this.state.movie.Year + ")"}</h6>
+                    <h6><a href={'https://www.imdb.com/title/' + this.props.mediaId} target="_new" title="View on IMDb">{this.state.movie.Title} {"(" + this.state.movie.Year + ")"}</a></h6>
                     <p className="details">{this.state.movie.Rated} | Runtime: {this.state.movie.Runtime} | Released: {this.state.movie.Released} {"(" + this.state.movie.Country + ")"}</p>
                     <p className="limit">
                         Starring: {this.state.movie.Actors} <br/>

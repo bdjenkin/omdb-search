@@ -31,7 +31,11 @@
 .search-wrap label {
   color: #fff;
 }
-
+.search-wrap input {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
 .results-wrap {
   background: #ddd;
   padding-top: 0.1rem;
@@ -40,6 +44,9 @@
 .empty-results {
   background-color: #222;
   height: 150px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   padding: 60px 0;
   color: white;
   border-radius: 6px;
