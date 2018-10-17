@@ -18,7 +18,7 @@ class Search extends Component {
         this.setState({value: event.target.value});
     
         var trimmed = JSON.stringify(event.target.value.trim());
-        var root = encodeURI('http://www.omdbapi.com/?s=' + trimmed + '&apikey=cb62c109&r=json');
+        var root = encodeURI('https://www.omdbapi.com/?s=' + trimmed + '&apikey=cb62c109&r=json');
         
         fetch(root)
         .then(response => response.json())

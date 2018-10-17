@@ -14,20 +14,23 @@
     "node": ">=4.3.2"
   },
   "scripts": {
-    "rstart": "react-scripts start",
+    "react-start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "npm run system-test",
     "eject": "react-scripts eject",
     "deploy": "gcloud app deploy",
-    "start": "node app.js",
+    "start-app": "node ./src/app.js",
     "lint": "repo-tools lint",
     "pretest": "npm run lint",
     "system-test": "repo-tools test app",
     "e2e-test": "repo-tools test deploy"
   },
   "dependencies": {
-    "express": "^4.16.3",
     "animate.css": "^3.6.1",
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
+    "path": "^0.12.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
